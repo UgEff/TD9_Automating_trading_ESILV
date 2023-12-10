@@ -1,0 +1,67 @@
+TD9 BLOCKCHAIN PROG
+
+Prerequisites 
+• Use Python 3 or javascript 
+• No precompiled trading module, write the REST calls yourself using a rest module
+• Use Binance API (or Coinbase if you
+prefer)
+• Create a function for each task 
+• Do not store your credentials on your github!
+
+Tasks list - GET 
+• Create a git repository and share it with
+the teacher (0xEniotna, make it public please)
+• Get a list of all available cryptocurrencies
+and display it
+• Create a function to display the ’ask’ or ‘bid’ price of an asset. Direction and asset name as parameters def getDepth(direction='ask', pair = 'BTCUSD')
+• Get order book for an asset
+
+Tasks list – GET 
+• Create a function to read agregated trading data (candles) def refreshDataCandle(pair = 'BTCUSD', duration = '5m’)
+• Create a sqlite table to store said data (schema attached in the next slide)
+• Store candle data in the db 
+• Modify refreshDataCandle() to update when new candle data is available
+• Create a function to extract all available trade data def refreshData(pair = 'BTCUSD’)
+• Store the data in sqlite
+
+Tasks list – POST 
+• Create an order def createOrder(api_key, secret_key, direction, price, amount, pair = 'BTCUSD_d', orderType = 'LimitOrder’)
+• Cancel an order def cancelOrder(api_key, secret_key, uuid)
+
+SQlite Schemat
+Data candles:
+CREATE TABLE my_table (
+    Id INTEGER PRIMARY KEY,
+    date INT, 
+    high REAL, 
+    low REAL, 
+    open REAL, 
+    close REAL, 
+    volume REAL
+    )
+
+Full data set:
+CREATE TABLE my_table(Id INTEGER PRIMARY KEY,
+uuid TEXT, traded_crypto REAL, price REAL,
+created_at_int INT, side TEXT)
+
+
+Keeping track of updates:
+CREATE TABLE last_checks(Id INTEGER PRIMARY KEY,
+exchange TEXT, trading_pair TEXT, duration TEXT,
+table_name TEXT, last_check INT, startdate INT, last_id
+INT);
+
+
+DOC
+
+Wikipedia page for APIs
+https://fr.wikipedia.org/wiki/Interface_de_programmation
+Using requests in Python
+https://www.pythonforbeginners.com/requests/using-req
+uests-in-python
+Binance API Documentation
+https://github.com/binance/binance-spot-api-docs/blob/
+master/rest-api.md
+Coinbase pro API documentation
+https://docs.pro.coinbase.com/
